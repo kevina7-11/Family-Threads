@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000"; // Backend URL
+const API_URL = "https://family-threads.onrender.com"; // Backend URL
 const socket = io(); // Connect to the WebSocket 
 const chatBox = document.getElementById("chat-box");
 if (!chatBox) {

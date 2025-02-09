@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Threads - Daily Feed</title>
+    <style>
+        /* Chat Section Styling */
+        #chat-section {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Chat Box Styling */
+        #chat-box {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+
+        /* Individual Chat Message Styling */
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #e1f5fe;
+            color: #333;
+            word-wrap: break-word;
+        }
+
+        /* Input Field Styling */
+        #chat-message {
+            width: calc(100% - 80px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        #chat-message:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Send Button Styling */
+        button {
+            width: 70px;
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004080;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Family Threads</h1>
+    </header>
+    
+
+        <!-- Posting Section -->
+        <div id="post-section">
+            <h2>Family Corner</h2>
+            <textarea id="postInput" placeholder="Talk about your day!"></textarea>
+            <button onclick="addPost()">Post</button>
+            <div id="posts"></div>
+        </div>
+
+        <!-- Birthday Section -->
+        <div id="birthday-section">
+            <h2>Birthdays</h2>
+            <input type="text" id="nameInput" placeholder="Name">
+            <input type="date" id="birthdayInput">
+            <button onclick="addBirthday()">Add Birthday</button>
+            <div id="birthdays"></div>
+        </div>
+
+<!-- Chat Section
+        <div id="chat-section">
+            <h2>Family Chat</h2>
+            <div id="chat-box"></div>
+            <input type="text" id="chat-message" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div> -->
+        
+    
+        <button onclick="clearData()" class="clear-btn">🗑️ Clear All Data</button>
+
+    </div>
+
+    <script>
+        // Function to display a chat message
+        function displayChatMessage(message) {
+            const chatBox = document.getElementById("chat-box");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("chat-message");
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+        }
+
+        // Function to send a message
+        function sendMessage() {
+            const messageInput = document.getElementById("chat-message");
+            const message = messageInput.value.trim();
+            console.log(message)
+            if (!message) return; // Don't send empty messages
+
+            displayChatMessage(`You: ${message}`); // Display the message in the chat box
+            messageInput.value = ""; // Clear the input field
+        }
+
+        // Optional: Simulate receiving a message (for testing)
+        setTimeout(() => {
+            displayChatMessage("Family Member: Hello!");
+        }, 1000);
+    </script>
+
+    <script src="../static/script.js"></script>
+</body>        
+</html>

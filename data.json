@@ -1,0 +1,18 @@
+{
+    "posts": [
+        {
+            "content": "hello",
+            "date": "February 09, 2025"
+        },
+        {
+            "content": "hello",
+            "date": "February 09, 2025"
+        }
+    ],
+    "birthdays": [
+        {
+            "name": "Kevina",
+            "date": "2025-02-10"
+        }
+    ]
+}
